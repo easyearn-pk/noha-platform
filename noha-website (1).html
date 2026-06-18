@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🕌 Noha Platform — Muharram ul Haram 1447</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#c8962a;--gold-l:#f0c060;--gold-d:#7a5a30;
+  --red:#c82020;--red-d:#8a1010;
+  --bg:#0d0a0f;--bg2:#140f05;--bg3:#180e04;--bg4:#1e1208;
+  --bdr:#2a1a08;--bdr2:#3a2a10;
+  --txt:#e8d5a3;--txt2:#a07840;--txt3:#7a5a30;--txt4:#5a3a1a;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Playfair Display',serif;background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bdr2);border-radius:3px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:200;background:rgba(13,10,15,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr);display:flex;align-items:center;padding:0 1.5rem;height:58px;gap:8px}
+.logo{font-size:18px;font-weight:700;color:var(--gold-l);text-decoration:none;white-space:nowrap;margin-right:auto}
+.logo em{font-style:normal;font-size:20px}
+.nbtn{padding:7px 13px;border-radius:7px;border:none;background:transparent;color:var(--txt3);font-size:12px;cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap}
+.nbtn:hover,.nbtn.on{color:var(--gold-l);background:rgba(200,150,42,.1)}
+.nbtn i{margin-right:3px}
+.upload-btn{background:var(--red);color:#fff;border-radius:8px;padding:8px 16px;border:none;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
+.upload-btn:hover{background:#e02525;transform:translateY(-1px)}
+
+/* HERO */
+.hero{text-align:center;padding:2.5rem 1rem 2rem;background:radial-gradient(ellipse at top,rgba(180,30,30,.12),transparent 60%),radial-gradient(ellipse at bottom,rgba(200,150,42,.07),transparent 60%);border-bottom:1px solid var(--bdr)}
+.bismillah{font-family:'Amiri',serif;font-size:24px;color:var(--gold);margin-bottom:.4rem;opacity:.9}
+.hero-title{font-size:clamp(26px,5vw,44px);font-weight:700;color:var(--gold-l);margin-bottom:.3rem}
+.hero-sub{font-family:'Amiri',serif;font-size:17px;color:var(--txt2);margin-bottom:1rem}
+.stats-row{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:1rem}
+.stat{text-align:center}
+.stat b{display:block;font-size:22px;font-weight:700;color:var(--gold-l)}
+.stat small{font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px}
+
+/* PAGE SYSTEM */
+.page{display:none}.page.on{display:block}
+
+/* MAIN */
+.wrap{max-width:1100px;margin:0 auto;padding:1.5rem}
+
+/* SEARCH & FILTER */
+.search-box{position:relative;margin-bottom:1rem}
+.search-box i{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--txt4);font-size:17px;pointer-events:none}
+.search-box input{width:100%;background:var(--bg4);border:1px solid var(--bdr2);color:var(--txt);padding:11px 14px 11px 40px;border-radius:9px;font-family:inherit;font-size:13px;outline:none;transition:border-color .2s}
+.search-box input:focus{border-color:var(--gold)}
+.search-box input::placeholder{color:var(--txt4)}
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.25rem}
+.fb{padding:7px 15px;border-radius:20px;border:1px solid var(--bdr2);background:transparent;color:var(--txt3);font-size:11px;cursor:pointer;font-family:inherit;transition:all .2s}
+.fb.on{background:rgba(200,150,42,.15);border-color:var(--gold);color:var(--gold-l)}
+.fb:hover:not(.on){border-color:var(--txt4);color:var(--txt2)}
+
+/* SECTION HEADER */
+.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem}
+.sh h2{font-size:17px;font-weight:700;color:var(--gold-l);display:flex;align-items:center;gap:7px}
+.sh-count{font-size:11px;color:var(--txt3);background:var(--bg3);border:1px solid var(--bdr);padding:3px 10px;border-radius:20px}
+
+/* NOHA GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin-bottom:1.5rem}
+
+/* NOHA CARD */
+.card{background:var(--bg3);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;transition:all .2s;cursor:pointer}
+.card:hover{border-color:var(--bdr2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.45)}
+.card-top{background:linear-gradient(135deg,#2a1408,#180a02);padding:1rem;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--bdr)}
+.thumb{width:52px;height:52px;border-radius:9px;background:var(--bg);display:flex;align-items:center;justify-content:center;border:1px solid var(--bdr2);flex-shrink:0;font-size:22px;color:var(--gold)}
+.card-info{flex:1;min-width:0}
+.card-title{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-singer{font-size:11px;color:var(--txt3);margin-bottom:5px}
+.tags{display:flex;gap:5px;flex-wrap:wrap}
+.tag{padding:2px 7px;border-radius:9px;font-size:9px;font-weight:700}
+.t-mp3{background:rgba(40,100,200,.2);border:1px solid rgba(40,100,200,.3);color:#80b8ff}
+.t-video{background:rgba(180,30,30,.2);border:1px solid rgba(180,30,30,.3);color:#ff8080}
+.t-lang{background:rgba(200,150,42,.15);border:1px solid rgba(200,150,42,.2);color:var(--gold)}
+.t-new{background:rgba(40,160,40,.2);border:1px solid rgba(40,160,40,.3);color:#80e080}
+.card-bot{padding:10px 1rem;display:flex;align-items:center;justify-content:space-between}
+.card-meta{font-size:10px;color:var(--txt4);display:flex;gap:10px}
+.actions{display:flex;gap:5px}
+.abtn{width:32px;height:32px;border-radius:7px;border:1px solid var(--bdr2);background:transparent;color:var(--txt3);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;transition:all .2s}
+.abtn:hover{border-color:var(--gold);color:var(--gold-l);background:rgba(200,150,42,.1)}
+.abtn.play:hover{border-color:#40c060;color:#60e080}
+.abtn.dl:hover{border-color:#4090e0;color:#80b8ff}
+.abtn.liked{color:#e05050!important;border-color:#903030!important}
+
+/* VIDEO PLAYER MODAL */
+.vmodal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:500;align-items:center;justify-content:center;padding:1rem}
+.vmodal.on{display:flex}
+.vbox{background:var(--bg2);border:1px solid var(--bdr2);border-radius:16px;width:100%;max-width:800px;overflow:hidden}
+.vhead{padding:1rem 1.25rem;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between}
+.vtitle{font-size:15px;font-weight:700;color:var(--gold-l);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:10px}
+.vclose{width:34px;height:34px;border-radius:8px;border:1px solid var(--bdr2);background:transparent;color:var(--txt3);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.vclose:hover{border-color:var(--red);color:#e05050}
+.vbody{padding:1rem}
+.yt-wrap{position:relative;padding-bottom:56.25%;height:0;border-radius:10px;overflow:hidden;background:#000;margin-bottom:1rem}
+.yt-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.vinfo{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.vinfo-left{font-size:12px;color:var(--txt3)}
+.vinfo-left b{color:var(--txt2);display:block;font-size:13px;margin-bottom:2px}
+.vdl-btn{padding:9px 18px;background:var(--red-d);border:none;border-radius:8px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;transition:all .2s}
+.vdl-btn:hover{background:var(--red)}
+
+/* UPLOAD MODAL */
+.umodal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:400;align-items:center;justify-content:center;padding:1rem}
+.umodal.on{display:flex}
+.ubox{background:var(--bg2);border:1px solid var(--bdr2);border-radius:14px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
+.uhead{padding:1.1rem 1.4rem;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg2);z-index:1}
+.uhead h3{font-size:17px;font-weight:700;color:var(--gold-l)}
+.ubody{padding:1.4rem}
+.drop-z{border:2px dashed var(--bdr2);border-radius:11px;padding:2rem 1rem;text-align:center;background:rgba(200,150,42,.03);cursor:pointer;transition:all .2s;margin-bottom:1.2rem;position:relative}
+.drop-z:hover,.drop-z.drag{border-color:var(--gold);background:rgba(200,150,42,.07)}
+.drop-z input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-icon{font-size:36px;color:var(--gold);margin-bottom:.6rem}
+.drop-t{font-size:14px;color:var(--txt);font-weight:600;margin-bottom:.3rem}
+.drop-s{font-size:11px;color:var(--txt3)}
+.fsel{display:none;background:rgba(40,130,40,.1);border:1px solid rgba(40,130,40,.3);border-radius:7px;padding:9px 13px;font-size:11px;color:#80d080;margin-bottom:1.2rem;align-items:center;gap:7px}
+.yt-input-section{background:var(--bg4);border:1px solid var(--bdr2);border-radius:10px;padding:1rem;margin-bottom:1.2rem}
+.yt-input-section p{font-size:11px;color:var(--txt3);margin-bottom:.6rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fg{margin-bottom:.9rem}
+.fl{display:block;font-size:10px;color:var(--txt2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.fi,.fs,.ft{width:100%;background:var(--bg4);border:1px solid var(--bdr2);color:var(--txt);padding:9px 12px;border-radius:7px;font-family:inherit;font-size:12px;outline:none;transition:border-color .2s}
+.fi:focus,.fs:focus,.ft:focus{border-color:var(--gold)}
+.fi::placeholder,.ft::placeholder{color:var(--txt4)}
+.fs option{background:var(--bg4)}
+.ft{resize:vertical;min-height:70px}
+.sub-btn{width:100%;padding:12px;background:linear-gradient(135deg,var(--red-d),var(--red));border:none;border-radius:9px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;margin-top:.4rem}
+.sub-btn:hover{background:linear-gradient(135deg,#aa1515,#e02525);transform:translateY(-1px)}
+.sub-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.tab-btns{display:flex;gap:7px;margin-bottom:1rem}
+.tb{flex:1;padding:8px;border-radius:8px;border:1px solid var(--bdr2);background:transparent;color:var(--txt3);font-size:11px;cursor:pointer;font-family:inherit;transition:all .2s;text-align:center}
+.tb.on{background:rgba(200,150,42,.15);border-color:var(--gold);color:var(--gold-l)}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--bg2);border:1px solid var(--bdr2);color:var(--txt);padding:11px 22px;border-radius:9px;font-size:12px;z-index:600;opacity:0;pointer-events:none;transition:all .3s;white-space:nowrap;max-width:90vw}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.ok{border-color:#2a6a2a;color:#80d080;background:rgba(8,25,8,.97)}
+.toast.err{border-color:#6a1a1a;color:#f07070;background:rgba(25,8,8,.97)}
+
+/* EMPTY */
+.empty{text-align:center;padding:3rem;color:var(--txt3)}
+.empty i{font-size:44px;margin-bottom:.8rem;color:var(--txt4);display:block}
+
+/* TRENDING TABLE */
+.tr-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--bdr)}
+.tr-row:last-child{border:none}
+.rank{width:22px;font-size:12px;color:var(--txt4);font-weight:700;flex-shrink:0}
+.rank.top{color:var(--gold)}
+
+/* FOOTER */
+footer{text-align:center;padding:1.5rem;border-top:1px solid var(--bdr);margin-top:2rem;color:var(--txt3);font-size:11px}
+footer .fa{font-family:'Amiri',serif;font-size:18px;color:var(--red);margin-bottom:.3rem}
+
+@media(max-width:580px){
+  .nav{padding:0 .8rem;gap:4px}
+  .nbtn span{display:none}
+  .grid{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="logo" href="#" onclick="goPage('home')"><em>🕌</em> Noha Platform</a>
+  <button class="nbtn on" id="nb-home" onclick="goPage('home')"><i class="ti ti-home"></i><span>Home</span></button>
+  <button class="nbtn" id="nb-browse" onclick="goPage('browse')"><i class="ti ti-music"></i><span>Browse</span></button>
+  <button class="nbtn" id="nb-trending" onclick="goPage('trending')"><i class="ti ti-flame"></i><span>Trending</span></button>
+  <button class="upload-btn" onclick="openUpload()"><i class="ti ti-upload"></i> Upload</button>
+</nav>
+
+<!-- HOME -->
+<div id="page-home" class="page on">
+  <div class="hero">
+    <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <h1 class="hero-title">🕌 Noha Platform</h1>
+    <p class="hero-sub">محرم الحرام ۱۴۴۷ — نوحہ شیئرنگ پلیٹ فارم</p>
+    <div class="stats-row">
+      <div class="stat"><b id="s-total">0</b><small>Total Nohe</small></div>
+      <div class="stat"><b id="s-singers">0</b><small>Nohwa Khawan</small></div>
+      <div class="stat"><b id="s-dl">0</b><small>Downloads</small></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="sh"><h2><i class="ti ti-clock"></i> Naye Nohe</h2><button class="nbtn" onclick="goPage('browse')">Sab Dekhein →</button></div>
+    <div class="grid" id="home-latest"></div>
+    <div class="sh" style="margin-top:1.5rem"><h2><i class="ti ti-flame"></i> Sabse Zyada Sunay Gaye</h2></div>
+    <div class="grid" id="home-top"></div>
+  </div>
+</div>
+
+<!-- BROWSE -->
+<div id="page-browse" class="page">
+  <div class="wrap">
+    <div class="search-box"><i class="ti ti-search"></i><input type="text" id="srch" placeholder="Noha ya nohwa khawan dhundein..." oninput="doSearch()"></div>
+    <div class="filters">
+      <button class="fb on" onclick="setF('all',this)">Sab</button>
+      <button class="fb" onclick="setF('mp3',this)">MP3</button>
+      <button class="fb" onclick="setF('video',this)">Video</button>
+      <button class="fb" onclick="setF('urdu',this)">Urdu</button>
+      <button class="fb" onclick="setF('punjabi',this)">Punjabi</button>
+      <button class="fb" onclick="setF('arabic',this)">Arabic</button>
+      <button class="fb" onclick="setF('farsi',this)">Farsi</button>
+      <button class="fb" onclick="setF('sindhi',this)">Sindhi</button>
+    </div>
+    <div class="sh"><h2><i class="ti ti-music"></i> Tamam Nohe</h2><span class="sh-count" id="b-count">0</span></div>
+    <div class="grid" id="browse-grid"></div>
+    <div class="empty" id="b-empty" style="display:none"><i class="ti ti-music-off"></i>Koi noha nahi mila</div>
+  </div>
+</div>
+
+<!-- TRENDING -->
+<div id="page-trending" class="page">
+  <div class="wrap">
+    <div class="sh"><h2><i class="ti ti-flame"></i> Trending Nohe</h2></div>
+    <div id="t-grid" class="grid"></div>
+    <div class="sh" style="margin-top:2rem"><h2><i class="ti ti-chart-bar"></i> Top Chart</h2></div>
+    <div id="t-chart"></div>
+  </div>
+</div>
+
+<!-- VIDEO PLAYER MODAL -->
+<div class="vmodal" id="vmodal">
+  <div class="vbox">
+    <div class="vhead">
+      <span class="vtitle" id="vt-title">—</span>
+      <button class="vclose" onclick="closeVideo()"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="vbody">
+      <div class="yt-wrap"><iframe id="yt-frame" allowfullscreen allow="autoplay; encrypted-media" src=""></iframe></div>
+      <div class="vinfo">
+        <div class="vinfo-left">
+          <b id="vt-singer">—</b>
+          <span id="vt-lang">—</span> &nbsp;|&nbsp; <span id="vt-type">—</span>
+        </div>
+        <button class="vdl-btn" id="vdl-btn" onclick="dlCurrent()">
+          <i class="ti ti-download"></i> YouTube Par Download Karein
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UPLOAD MODAL -->
+<div class="umodal" id="umodal">
+  <div class="ubox">
+    <div class="uhead">
+      <h3><i class="ti ti-upload"></i> Noha Upload Karein</h3>
+      <button class="vclose" onclick="closeUpload()"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="ubody">
+      <div class="tab-btns">
+        <button class="tb on" id="tab-yt" onclick="switchTab('yt')"><i class="ti ti-brand-youtube"></i> YouTube Link</button>
+        <button class="tb" id="tab-file" onclick="switchTab('file')"><i class="ti ti-file-music"></i> MP3/Video File</button>
+      </div>
+
+      <!-- YouTube Tab -->
+      <div id="sec-yt">
+        <div class="yt-input-section">
+          <p><i class="ti ti-info-circle"></i> YouTube noha ka link paste karein (youtube.com/watch?v=...)</p>
+          <div class="fg">
+            <label class="fl">YouTube URL *</label>
+            <input type="text" class="fi" id="inp-yt" placeholder="https://www.youtube.com/watch?v=...">
+          </div>
+        </div>
+      </div>
+
+      <!-- File Tab -->
+      <div id="sec-file" style="display:none">
+        <div class="drop-z" id="dz">
+          <input type="file" id="finput" accept="audio/*,video/mp4,video/webm" onchange="onFile(this)">
+          <div class="drop-icon"><i class="ti ti-cloud-upload"></i></div>
+          <div class="drop-t">File Yahan Drop Karein ya Click Karein</div>
+          <div class="drop-s">MP3, MP4, WAV • Max 200MB</div>
+        </div>
+        <div class="fsel" id="fsel"><i class="ti ti-file-check" style="font-size:17px;flex-shrink:0"></i><span id="fname">—</span></div>
+      </div>
+
+      <div class="frow">
+        <div class="fg"><label class="fl">Noha Ka Naam *</label><input type="text" class="fi" id="inp-title" placeholder="Noha ka naam..."></div>
+        <div class="fg"><label class="fl">Nohwa Khawan *</label><input type="text" class="fi" id="inp-singer" placeholder="Nohwa khawan ka naam..."></div>
+      </div>
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">Zubaan</label>
+          <select class="fs" id="inp-lang">
+            <option value="urdu">Urdu</option>
+            <option value="punjabi">Punjabi</option>
+            <option value="arabic">Arabic</option>
+            <option value="farsi">Farsi</option>
+            <option value="sindhi">Sindhi</option>
+            <option value="english">English</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Saal</label><input type="text" class="fi" id="inp-year" placeholder="2024"></div>
+      </div>
+      <div class="fg"><label class="fl">Aapka Naam (Optional)</label><input type="text" class="fi" id="inp-by" placeholder="Aapka naam ya username..."></div>
+      <button class="sub-btn" id="sub-btn" onclick="doUpload()"><i class="ti ti-upload"></i> Upload Karein</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  <div class="fa">یا حسین ؑ — Ya Hussain A.S.</div>
+  Noha Platform • Muharram ul Haram 1447 • Sab ke liye bilkul free
+</footer>
+
+<script>
+// ─── BUILT-IN NOHAS with real YouTube IDs ───
+const BUILTIN = [
+  // Nadeem Sarwar 2024
+  { id:1001, title:"Haye Hussain Ibn Ali", singer:"Nadeem Sarwar", lang:"urdu", year:"2024", type:"video", ytId:"uoBYjoJlsKc", dl:1840, date:1720000000000 },
+  { id:1002, title:"Wawaila", singer:"Nadeem Sarwar", lang:"urdu", year:"2024", type:"video", ytId:"9QkapwU8cUI", dl:1620, date:1720100000000 },
+  { id:1003, title:"Main Alamdar", singer:"Nadeem Sarwar", lang:"urdu", year:"2024", type:"video", ytId:"v8-M4ot4U7g", dl:1480, date:1720200000000 },
+  { id:1004, title:"Salam Ya Hussain", singer:"Nadeem Sarwar", lang:"urdu", year:"2024", type:"video", ytId:"qVn-DTxfn7o", dl:1350, date:1719000000000 },
+
+  // Farhan Ali Waris 2024
+  { id:1005, title:"Mera Hi Naam Abbas Hai", singer:"Farhan Ali Waris", lang:"urdu", year:"2024", type:"video", ytId:"-MJQdONyfME", dl:1290, date:1720050000000 },
+  { id:1006, title:"Ali Jan E Jahan", singer:"Farhan Ali Waris", lang:"urdu", year:"2024", type:"video", ytId:"-QHUczPwzdQ", dl:1170, date:1720150000000 },
+  { id:1007, title:"Ya Imam E Raza", singer:"Farhan Ali Waris", lang:"urdu", year:"2024", type:"video", ytId:"gh7gNlrpyU8", dl:1050, date:1720250000000 },
+
+  // Mir Hasan Mir 2024
+  { id:1008, title:"Baap Se Batain Karo Akber", singer:"Mir Hasan Mir", lang:"urdu", year:"2024", type:"video", ytId:"R7rptB1JYBk", dl:980, date:1728000000000 },
+  { id:1009, title:"Karbala Janay Walon", singer:"Mir Hasan Mir", lang:"urdu", year:"2024", type:"video", ytId:"T-4FXdO_69o", dl:890, date:1720300000000 },
+  { id:1010, title:"Hussain Aate Hain", singer:"Nadeem Sarwar", lang:"urdu", year:"2024", type:"video", ytId:"-C7_7gUg300", dl:820, date:1720400000000 },
+
+  // Compilation
+  { id:1011, title:"Top 10 Nohe 2024", singer:"Various Artists", lang:"urdu", year:"2024", type:"video", ytId:"MmSHPS2s0-g", dl:2100, date:1721500000000 },
+];
+
+// ─── DATA ───
+let nohas = [...BUILTIN];
+let userNohas = [];
+try { userNohas = JSON.parse(localStorage.getItem('u_nohas')||'[]'); } catch(e){}
+nohas = [...BUILTIN, ...userNohas];
+
+let liked = {};
+try { liked = JSON.parse(localStorage.getItem('liked')||'{}'); } catch(e){}
+
+let curFilter = 'all';
+let currentNoha = null;
+let currentAudio = null; // sirf ek hi audio kabhi bajay — global reference
+let uploadTab = 'yt';
+let selFile = null;
+
+// ─── UTILS ───
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') }
+
+function toast(msg, type=''){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = 'toast '+type+' on';
+  clearTimeout(t._t); t._t = setTimeout(()=>t.classList.remove('on'), 3000);
+}
+
+function saveUser(){
+  try{ localStorage.setItem('u_nohas', JSON.stringify(userNohas)); }catch(e){}
+}
+
+function saveLiked(){
+  try{ localStorage.setItem('liked', JSON.stringify(liked)); }catch(e){}
+}
+
+// ─── STATS ───
+function updateStats(){
+  const singers = new Set(nohas.map(n=>n.singer)).size;
+  const totalDl = nohas.reduce((a,n)=>a+n.dl,0);
+  document.getElementById('s-total').textContent = nohas.length;
+  document.getElementById('s-singers').textContent = singers;
+  document.getElementById('s-dl').textContent = totalDl>=1000?(totalDl/1000).toFixed(1)+'K':totalDl;
+}
+
+// ─── CARD ───
+function buildCard(n){
+  const isLiked = liked[n.id];
+  const isNew = (Date.now()-n.date) < 86400000*7;
+  const icon = n.type==='video' ? 'ti-video' : 'ti-music';
+  const ytBadge = n.ytId ? `<span class="tag t-mp3" style="background:rgba(220,0,0,.2);border-color:rgba(220,0,0,.3);color:#ff8080">YouTube</span>` : '';
+  return `<div class="card">
+    <div class="card-top">
+      <div class="thumb"><i class="ti ${icon}"></i></div>
+      <div class="card-info">
+        <div class="card-title">${esc(n.title)}</div>
+        <div class="card-singer"><i class="ti ti-microphone" style="font-size:11px;margin-right:3px"></i>${esc(n.singer)}</div>
+        <div class="tags">
+          <span class="tag t-${n.type}">${n.type.toUpperCase()}</span>
+          <span class="tag t-lang">${esc(n.lang.charAt(0).toUpperCase()+n.lang.slice(1))}</span>
+          ${ytBadge}
+          ${isNew?'<span class="tag t-new">Naya</span>':''}
+        </div>
+      </div>
+    </div>
+    <div class="card-bot">
+      <div class="card-meta">
+        <span><i class="ti ti-download" style="font-size:10px;margin-right:2px"></i>${n.dl}</span>
+        ${n.year?`<span><i class="ti ti-calendar" style="font-size:10px;margin-right:2px"></i>${esc(n.year)}</span>`:''}
+      </div>
+      <div class="actions">
+        <button class="abtn play" onclick="playNoha(${n.id})" title="Play / Suno" aria-label="Play"><i class="ti ti-player-play"></i></button>
+        <button class="abtn dl" onclick="dlNoha(${n.id})" title="Download" aria-label="Download"><i class="ti ti-download"></i></button>
+        <button class="abtn ${isLiked?'liked':''}" onclick="toggleLike(${n.id},this)" title="Pasand" aria-label="Like"><i class="ti ti-heart"></i></button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ─── RENDER ───
+function renderGrid(id, list){
+  const el = document.getElementById(id);
+  el.innerHTML = list.length ? list.map(buildCard).join('') : '';
+}
+
+function renderAll(){
+  updateStats();
+  const latest = [...nohas].sort((a,b)=>b.date-a.date).slice(0,6);
+  const topDl = [...nohas].sort((a,b)=>b.dl-a.dl).slice(0,6);
+  renderGrid('home-latest', latest);
+  renderGrid('home-top', topDl);
+  renderGrid('t-grid', [...nohas].sort((a,b)=>b.dl-a.dl));
+  renderTrChart();
+  doSearch();
+}
+
+function renderTrChart(){
+  const top8 = [...nohas].sort((a,b)=>b.dl-a.dl).slice(0,8);
+  document.getElementById('t-chart').innerHTML = top8.map((n,i)=>`
+    <div class="tr-row">
+      <span class="rank ${i<3?'top':''}">#${i+1}</span>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:13px;color:var(--txt);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(n.title)}</div>
+        <div style="font-size:10px;color:var(--txt3)">${esc(n.singer)} • ${n.dl} downloads</div>
+      </div>
+      <button class="abtn play" onclick="playNoha(${n.id})" aria-label="Play"><i class="ti ti-player-play"></i></button>
+    </div>`).join('');
+}
+
+// ─── SEARCH & FILTER ───
+function setF(f, btn){
+  curFilter = f;
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  doSearch();
+}
+
+function doSearch(){
+  const q = (document.getElementById('srch').value||'').toLowerCase().trim();
+  const list = nohas.filter(n=>{
+    const mF = curFilter==='all'||n.type===curFilter||n.lang===curFilter;
+    const mQ = !q||n.title.toLowerCase().includes(q)||n.singer.toLowerCase().includes(q)||n.lang.includes(q);
+    return mF&&mQ;
+  });
+  document.getElementById('b-count').textContent = list.length+' Nohe';
+  renderGrid('browse-grid', list);
+  document.getElementById('b-empty').style.display = list.length?'none':'block';
+}
+
+// ─── PAGE NAV ───
+function goPage(p){
+  document.querySelectorAll('.page').forEach(e=>e.classList.remove('on'));
+  document.querySelectorAll('.nbtn[id^="nb-"]').forEach(e=>e.classList.remove('on'));
+  document.getElementById('page-'+p).classList.add('on');
+  const nb = document.getElementById('nb-'+p);
+  if(nb) nb.classList.add('on');
+  if(p==='browse') doSearch();
+  window.scrollTo(0,0);
+}
+
+// ─── PLAY NOHA ───
+function playNoha(id){
+  const n = nohas.find(x=>x.id===id);
+  if(!n) return;
+  currentNoha = n;
+
+  // Pehle se chal raha koi bhi audio/video band karo
+  stopCurrentMedia();
+
+  if(n.ytId){
+    // Play via YouTube embed
+    document.getElementById('vt-title').textContent = n.title;
+    document.getElementById('vt-singer').textContent = n.singer;
+    document.getElementById('vt-lang').textContent = n.lang.charAt(0).toUpperCase()+n.lang.slice(1);
+    document.getElementById('vt-type').textContent = n.type.toUpperCase();
+    document.getElementById('yt-frame').src = `https://www.youtube.com/embed/${n.ytId}?autoplay=1&rel=0`;
+    document.getElementById('vmodal').classList.add('on');
+  } else if(n.fileUrl){
+    // Play local file — sirf ek global audio object use karo
+    currentAudio = new Audio(n.fileUrl);
+    currentAudio.play().catch(()=>toast('File play nahi hui, browser ne block kiya','err'));
+    document.getElementById('vt-title').textContent = n.title;
+    document.getElementById('vt-singer').textContent = n.singer;
+    document.getElementById('vt-lang').textContent = n.lang.charAt(0).toUpperCase()+n.lang.slice(1);
+    document.getElementById('vt-type').textContent = 'MP3';
+    document.getElementById('yt-frame').src = '';
+    document.getElementById('vmodal').classList.add('on');
+    toast('▶️ Play ho raha hai: '+n.title,'ok');
+  } else {
+    toast('⚠️ Is nohe ka link available nahi','err');
+  }
+}
+
+// Har tarah ka chal raha media (audio file ya YouTube embed) rok do
+function stopCurrentMedia(){
+  if(currentAudio){
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio = null;
+  }
+  const frame = document.getElementById('yt-frame');
+  if(frame) frame.src = ''; // YouTube embed src clear karne se uska audio bhi ruk jata hai
+}
+
+function closeVideo(){
+  stopCurrentMedia();
+  document.getElementById('vmodal').classList.remove('on');
+}
+
+// ─── DOWNLOAD ───
+function dlNoha(id){
+  const n = nohas.find(x=>x.id===id);
+  if(!n) return;
+  n.dl++;
+  if(userNohas.find(x=>x.id===id)){
+    const u = userNohas.find(x=>x.id===id);
+    if(u) u.dl = n.dl;
+    saveUser();
+  }
+  if(n.ytId){
+    window.open(`https://www.youtube.com/watch?v=${n.ytId}`, '_blank');
+    toast('⬇️ YouTube par ja kar download karein: '+n.title,'ok');
+  } else if(n.fileUrl){
+    const a = document.createElement('a');
+    a.href = n.fileUrl; a.download = n.title+'.mp3'; a.click();
+    toast('⬇️ Download shuru: '+n.title,'ok');
+  } else {
+    toast('⚠️ Download link available nahi','err');
+  }
+  renderAll();
+}
+
+function dlCurrent(){
+  if(currentNoha) dlNoha(currentNoha.id);
+}
+
+// ─── LIKE ───
+function toggleLike(id, btn){
+  liked[id] = !liked[id];
+  btn.classList.toggle('liked', liked[id]);
+  saveLiked();
+  toast(liked[id]?'❤️ Pasand ki gayi!':'💔 Pasand hatai gyi');
+}
+
+// ─── UPLOAD ───
+function openUpload(){
+  document.getElementById('umodal').classList.add('on');
+}
+
+function closeUpload(){
+  document.getElementById('umodal').classList.remove('on');
+}
+
+document.getElementById('umodal').addEventListener('click',e=>{ if(e.target.id==='umodal') closeUpload(); });
+document.getElementById('vmodal').addEventListener('click',e=>{ if(e.target.id==='vmodal') closeVideo(); });
+
+function switchTab(t){
+  uploadTab = t;
+  document.getElementById('tab-yt').classList.toggle('on', t==='yt');
+  document.getElementById('tab-file').classList.toggle('on', t==='file');
+  document.getElementById('sec-yt').style.display = t==='yt'?'block':'none';
+  document.getElementById('sec-file').style.display = t==='file'?'block':'none';
+}
+
+function onFile(input){
+  const f = input.files[0];
+  if(!f) return;
+  selFile = f;
+  document.getElementById('fname').textContent = f.name+' ('+(f.size/1024/1024).toFixed(1)+' MB)';
+  document.getElementById('fsel').style.display = 'flex';
+  if(!document.getElementById('inp-title').value){
+    document.getElementById('inp-title').value = f.name.replace(/\.[^.]+$/,'');
+  }
+}
+
+// Drag & drop
+const dz = document.getElementById('dz');
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag')});
+dz.addEventListener('dragleave',()=>dz.classList.remove('drag'));
+dz.addEventListener('drop',e=>{
+  e.preventDefault(); dz.classList.remove('drag');
+  const fi = document.getElementById('finput');
+  fi.files = e.dataTransfer.files; onFile(fi);
+});
+
+function extractYtId(url){
+  const m = url.match(/[?&]v=([^&]+)/)||url.match(/youtu\.be\/([^?]+)/)||url.match(/embed\/([^?]+)/);
+  return m?m[1]:null;
+}
+
+function doUpload(){
+  const title = document.getElementById('inp-title').value.trim();
+  const singer = document.getElementById('inp-singer').value.trim();
+  if(!title){ toast('⚠️ Noha ka naam zaroor likhein!','err'); return; }
+  if(!singer){ toast('⚠️ Nohwa khawan ka naam zaroor likhein!','err'); return; }
+
+  const lang = document.getElementById('inp-lang').value;
+  const year = document.getElementById('inp-year').value.trim()||new Date().getFullYear().toString();
+  const by = document.getElementById('inp-by').value.trim()||'Anonymous';
+  const btn = document.getElementById('sub-btn');
+  btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader"></i> Upload ho raha hai...';
+
+  let newNoha = { id:Date.now(), title, singer, lang, year, dl:0, date:Date.now(), by };
+
+  if(uploadTab==='yt'){
+    const url = document.getElementById('inp-yt').value.trim();
+    const ytId = extractYtId(url);
+    if(!url){ toast('⚠️ YouTube URL zaroor dein!','err'); btn.disabled=false; btn.innerHTML='<i class="ti ti-upload"></i> Upload Karein'; return; }
+    if(!ytId){ toast('⚠️ YouTube URL sahi nahi — watch?v=... wala link dein','err'); btn.disabled=false; btn.innerHTML='<i class="ti ti-upload"></i> Upload Karein'; return; }
+    newNoha.ytId = ytId;
+    newNoha.type = 'video';
+    finishUpload(newNoha, btn);
+  } else {
+    if(!selFile){ toast('⚠️ Pehle file select karein!','err'); btn.disabled=false; btn.innerHTML='<i class="ti ti-upload"></i> Upload Karein'; return; }
+    const ext = selFile.name.split('.').pop().toLowerCase();
+    newNoha.type = ['mp4','webm'].includes(ext)?'video':'mp3';
+    const reader = new FileReader();
+    reader.onload = e => {
+      newNoha.fileUrl = e.target.result;
+      finishUpload(newNoha, btn);
+    };
+    reader.readAsDataURL(selFile);
+  }
+}
+
+function finishUpload(n, btn){
+  setTimeout(()=>{
+    userNohas.unshift(n);
+    saveUser();
+    nohas = [...BUILTIN, ...userNohas];
+    renderAll();
+    btn.disabled = false; btn.innerHTML = '<i class="ti ti-upload"></i> Upload Karein';
+    // Reset form
+    document.getElementById('inp-title').value='';
+    document.getElementById('inp-singer').value='';
+    document.getElementById('inp-year').value='';
+    document.getElementById('inp-by').value='';
+    document.getElementById('inp-yt').value='';
+    document.getElementById('finput').value='';
+    document.getElementById('fsel').style.display='none';
+    selFile = null;
+    closeUpload();
+    toast('✅ Noha successfully upload ho gaya! Shukriya!','ok');
+    goPage('browse');
+  }, 1200);
+}
+
+// ─── INIT ───
+renderAll();
+
+// Page band karte waqt ya tab switch karte waqt audio/video zaroor band karo
+window.addEventListener('beforeunload', stopCurrentMedia);
+document.addEventListener('visibilitychange', () => {
+  if(document.hidden) stopCurrentMedia();
+});
+</script>
+</body>
+</html>
